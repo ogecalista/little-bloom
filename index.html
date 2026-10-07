@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Little Bloom | Baby and Mum Shop (Demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F1FA;--surface:#FFFFFF;--ink:#2B2140;--muted:#6B6280;--line:#E2DCEF;--accent:#7A5BD0;--accent-ink:#FFFFFF;--sage:#DCEBE2;--peach:#FADFD3;--sky:#DDE8F6;--lilac:#E7DEF7;--wa:#1F9D55;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17121F;--surface:#221B2E;--ink:#F1ECFA;--muted:#B0A6C6;--line:#3A3050;--accent:#A58BF0;--accent-ink:#17121F;--sage:#2A3A32;--peach:#4A3029;--sky:#27364A;--lilac:#352B4D}}
+:root[data-theme="dark"]{--bg:#17121F;--surface:#221B2E;--ink:#F1ECFA;--muted:#B0A6C6;--line:#3A3050;--accent:#A58BF0;--accent-ink:#17121F;--sage:#2A3A32;--peach:#4A3029;--sky:#27364A;--lilac:#352B4D}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;font-size:16px}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+button{font:inherit;cursor:pointer}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.demo{background:var(--ink);color:var(--bg);font-size:13px;text-align:center;padding:8px 16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:22px;text-decoration:none}
+.cartbtn{background:var(--ink);color:var(--bg);border:0;border-radius:99px;padding:9px 16px;font-weight:600}
+.hero{padding:44px 0 28px}
+.hero h1{font-size:clamp(38px,9vw,72px);font-weight:700;max-width:12ch}
+.hero p{max-width:46ch;color:var(--muted);font-size:18px;margin:18px 0 26px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:99px;padding:13px 22px;font-weight:600;background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.trust{display:flex;gap:10px 28px;flex-wrap:wrap;padding:18px 0;border-block:1px solid var(--line);color:var(--muted);font-size:15px}
+.trust b{color:var(--ink)}
+section{padding:44px 0}
+section h2{font-size:clamp(28px,6vw,40px);margin-bottom:18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:8px 16px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{background:var(--surface);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.tile{height:150px;display:grid;place-items:center;font-size:62px}
+.info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.info h3{font-size:18px}
+.sub{color:var(--muted);font-size:14px}
+.price{font-weight:600;margin-top:6px}
+.add{margin-top:auto;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:12px;padding:10px;font-weight:600}
+.add:disabled{opacity:.45;cursor:not-allowed}
+.add:not(:disabled):hover{background:var(--ink);color:var(--bg)}
+.info{gap:6px}
+.how{display:grid;gap:0}
+.how div{padding:18px 0;border-top:1px solid var(--line);display:grid;gap:4px}
+.how div:last-child{border-bottom:1px solid var(--line)}
+.how h3{font-size:20px}
+.how p{margin:0;color:var(--muted);max-width:60ch}
+@media(min-width:720px){.how div{grid-template-columns:240px 1fr;gap:24px}}
+.quotes{display:grid;gap:16px}
+@media(min-width:720px){.quotes{grid-template-columns:1fr 1fr}}
+blockquote{margin:0;background:var(--lilac);border-radius:20px;padding:22px}
+blockquote p{margin:0 0 10px;font-size:18px}
+blockquote cite{color:var(--muted);font-style:normal;font-size:14px}
+footer{padding:30px 0 90px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.wafab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--wa);color:#fff;border-radius:99px;padding:13px 18px;font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:15}
+.veil{position:fixed;inset:0;background:rgba(20,10,35,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+.veil.on{opacity:1;pointer-events:auto}
+aside{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--surface);z-index:31;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;padding:calc(18px + env(safe-area-inset-top,0px)) 20px calc(18px + env(safe-area-inset-bottom,0px))}
+aside.on{transform:none}
+aside header{position:static;border:0;background:none;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+aside h2{font-size:26px;margin:0}
+.x{background:none;border:0;color:var(--ink);font-size:28px;line-height:1}
+.items{flex:1;overflow:auto}
+.it{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.it .e{font-size:30px;text-align:center}
+.q{display:flex;align-items:center;gap:8px;margin-top:4px}
+.q button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.empty{color:var(--muted);padding:30px 0}
+label{font-size:14px;color:var(--muted);display:block;margin:14px 0 6px}
+select{width:100%;padding:11px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.tot{display:flex;justify-content:space-between;margin:6px 0}
+.tot.big{font-weight:700;font-size:20px;margin-top:10px}
+.wabtn{background:var(--wa);color:#fff;width:100%;margin-top:14px;text-align:center}
+.pay{width:100%;margin-top:8px;text-align:center}
+.note{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.ico{width:84px;height:84px;fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.ico .f{fill:var(--surface);fill-opacity:.7}.dot{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700}.card[hidden]{display:none}</style>
+</head>
+<body>
+<div class="demo">Demo preview. Products, prices and photos are samples for your review.</div>
+<header><div class="wrap bar"><a class="logo" href="#top">Little Bloom</a><button class="cartbtn" id="open" aria-label="Open cart">Cart (<span id="n">0</span>)</button></div></header>
+
+<main id="top">
+<div class="wrap hero">
+<h1>Gentle things for baby, and for you.</h1>
+<p>Baby essentials and mum care, picked with care and delivered to your door. Order online or message us on WhatsApp.</p>
+<div class="row"><button class="btn" data-go="baby">Shop for baby</button><button class="btn alt" data-go="mum">Shop for mum</button></div>
+</div>
+
+<div class="wrap"><div class="trust"><span><b>Safe products</b> checked for little skin</span><span><b>Lagos delivery</b> in 1 to 2 days</span><span><b>Easy returns</b> within 7 days</span></div></div>
+
+<section id="shop"><div class="wrap">
+<h2>Shop</h2>
+<div class="chips" id="chips"><button class="chip" data-c="all" aria-pressed="true">All</button><button class="chip" data-c="baby" aria-pressed="false">Baby</button><button class="chip" data-c="mum" aria-pressed="false">Mum</button><button class="chip" data-c="gift" aria-pressed="false">Gift sets</button></div>
+<div class="grid" id="grid"><div class="card" data-cat="baby"><div class="tile" style="background:var(--sky)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="f" d="M20 14 L28 10 Q32 16 36 10 L44 14 L54 24 L46 30 L42 26 V52 H22 V26 L18 30 L10 24 Z"/></svg></div><div class="info"><h3>Cotton onesie set</h3><div class="sub">3 pieces, 0 to 6 months</div><div class="price">&#8358;8,500</div><button class="add" data-id="1">Add to cart</button></div></div><div class="card" data-cat="baby"><div class="tile" style="background:var(--peach)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="f" x="22" y="24" width="20" height="30" rx="5"/><rect class="f" x="26" y="16" width="12" height="8" rx="2"/><path d="M29 16 Q32 6 35 16"/><path d="M22 36 H42"/></svg></div><div class="info"><h3>Anti-colic bottle</h3><div class="sub">240ml, BPA free</div><div class="price">&#8358;6,200</div><button class="add" data-id="2">Add to cart</button></div></div><div class="card" data-cat="baby"><div class="tile" style="background:var(--sage)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="f" x="24" y="22" width="16" height="32" rx="4"/><rect class="f" x="28" y="12" width="8" height="10"/><path d="M36 14 H44"/><path d="M28 36 H36"/></svg></div><div class="info"><h3>Gentle baby wash</h3><div class="sub">300ml, tear free</div><div class="price">&#8358;4,800</div><button class="add" data-id="3">Add to cart</button></div></div><div class="card" data-cat="baby"><div class="tile" style="background:var(--lilac)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="f" d="M18 14 H34 V32 L50 38 Q54 42 50 48 H18 Z"/><path d="M18 22 H34"/></svg></div><div class="info"><h3>Soft knit booties</h3><div class="sub">0 to 12 months</div><div class="price">&#8358;3,500</div><button class="add" data-id="4" disabled>Out of stock</button></div></div><div class="card" data-cat="mum"><div class="tile" style="background:var(--sage)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="f" x="16" y="28" width="32" height="24" rx="5"/><rect class="f" x="18" y="20" width="28" height="8" rx="3"/><path d="M32 44 Q40 36 44 40 Q38 46 32 44"/></svg></div><div class="info"><h3>Stretch mark body butter</h3><div class="sub">250g, shea and cocoa</div><div class="price">&#8358;7,800</div><button class="add" data-id="5">Add to cart</button></div></div><div class="card" data-cat="mum"><div class="tile" style="background:var(--peach)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="f" d="M10 38 Q12 20 32 18 Q52 20 54 38 Q54 48 44 48 Q32 38 20 48 Q10 48 10 38 Z"/></svg></div><div class="info"><h3>Nursing pillow</h3><div class="sub">Washable cover</div><div class="price">&#8358;15,500</div><button class="add" data-id="6">Add to cart</button></div></div><div class="card" data-cat="mum"><div class="tile" style="background:var(--lilac)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="f" x="12" y="22" width="40" height="28" rx="5"/><path d="M24 22 V16 H40 V22"/><path d="M32 30 V42 M26 36 H38"/></svg></div><div class="info"><h3>Postpartum recovery kit</h3><div class="sub">6 essentials</div><div class="price">&#8358;22,000</div><button class="add" data-id="7">Add to cart</button></div></div><div class="card" data-cat="gift"><div class="tile" style="background:var(--sky)"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="f" x="12" y="28" width="40" height="24"/><rect class="f" x="10" y="22" width="44" height="8"/><path d="M32 22 V52"/><path d="M32 22 Q22 10 24 20 M32 22 Q42 10 40 20"/></svg></div><div class="info"><h3>Newborn gift box</h3><div class="sub">Baby and mum, gift wrapped</div><div class="price">&#8358;28,500</div><button class="add" data-id="8">Add to cart</button></div></div></div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Delivery and returns</h2>
+<div class="how">
+<div><h3>Lagos</h3><p>Delivered in 1 to 2 working days. Pay online, by transfer, or on delivery.</p></div>
+<div><h3>Other states</h3><p>Sent by courier in 3 to 5 working days. Payment before dispatch.</p></div>
+<div><h3>Returns</h3><p>Unopened items can be returned within 7 days. Message us on WhatsApp and we'll arrange it.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>What mums say</h2>
+<div class="quotes">
+<blockquote><p>The gift box arrived beautifully packed, and my sister cried happy tears.</p><cite>Sample review, Ada, Lekki</cite></blockquote>
+<blockquote><p>Fast delivery and the body butter really is gentle. I ordered again this week.</p><cite>Sample review, Funke, Ikeja</cite></blockquote>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Little Bloom Baby and Mum Shop. Lagos, Nigeria. This is a demo design.</div></footer>
+
+<a class="wafab" id="wa" href="https://wa.me/?text=Hello%20Little%20Bloom%2C%20I%20have%20a%20question." target="_blank" rel="noopener">Chat on WhatsApp</a>
+
+<div class="veil" id="veil"></div>
+<aside id="cart" aria-label="Your cart">
+<header><h2>Your cart</h2><button class="x" id="close" aria-label="Close cart">&times;</button></header>
+<div class="items" id="items"></div>
+<div>
+<label for="zone">Delivery area</label>
+<select id="zone"><option value="2500">Lagos (&#8358;2,500)</option><option value="4500">Other states (&#8358;4,500)</option></select>
+<div class="tot"><span>Items</span><span id="sub">&#8358;0</span></div>
+<div class="tot"><span>Delivery</span><span id="del">&#8358;0</span></div>
+<div class="tot big"><span>Total</span><span id="tot">&#8358;0</span></div>
+<a class="btn wabtn" id="wbtn" href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
+<button class="btn alt pay" id="pay">Pay with card</button>
+<div class="note" id="note">Card payment (Paystack) connects on the live site.</div>
+</div>
+</aside>
+
+<script>var P=[{n:"Cotton onesie set",p:8500,b:"--sky"},{n:"Anti-colic bottle",p:6200,b:"--peach"},{n:"Gentle baby wash",p:4800,b:"--sage"},{n:"Soft knit booties",p:3500,b:"--lilac"},{n:"Stretch mark body butter",p:7800,b:"--sage"},{n:"Nursing pillow",p:15500,b:"--peach"},{n:"Postpartum recovery kit",p:22000,b:"--lilac"},{n:"Newborn gift box",p:28500,b:"--sky"}];
+var cart={},cat="all";
+var $=function(i){return document.getElementById(i)};
+var N=function(v){return "\u20A6"+String(v).replace(/\B(?=(\d{3})+(?!\d))/g,",")};
+function filt(){var cs=document.querySelectorAll(".chip"),i;for(i=0;i<cs.length;i++)cs[i].setAttribute("aria-pressed",String(cs[i].getAttribute("data-c")===cat));var cd=document.querySelectorAll(".card");for(i=0;i<cd.length;i++)cd[i].hidden=!(cat==="all"||cd[i].getAttribute("data-cat")===cat)}
+function render(){
+var ids=Object.keys(cart),count=0,sub=0;
+$("items").innerHTML=ids.length?ids.map(function(id){var p=P[id-1],q=cart[id];count+=q;sub+=p.p*q;
+return '<div class="it"><div class="dot" style="background:var('+p.b+')">'+p.n.charAt(0)+'</div><div><strong>'+p.n+'</strong><div class="q"><button data-m="'+id+'" aria-label="Less">-</button>'+q+'<button data-a="'+id+'" aria-label="More">+</button></div></div><div>'+N(p.p*q)+'</div></div>'}).join(""):'<div class="empty">Your cart is empty. Add something lovely.</div>';
+var d=ids.length?+$("zone").value:0;
+$("n").textContent=count;$("sub").textContent=N(sub);$("del").textContent=N(d);$("tot").textContent=N(sub+d);
+var lines=ids.map(function(id){return cart[id]+" x "+P[id-1].n}).join("%0A");
+var z=$("zone").selectedIndex?"Other states":"Lagos";
+$("wbtn").href=ids.length?"https://wa.me/?text="+"Hello Little Bloom, I'd like to order:%0A"+lines+"%0A%0ADelivery: "+z+"%0ATotal: "+encodeURIComponent(N(sub+d)):"#";
+}
+function add(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];render()}
+function openCart(o){$("cart").classList.toggle("on",o);$("veil").classList.toggle("on",o)}
+document.addEventListener("click",function(e){
+var t=e.target;
+if(t.dataset.c){cat=t.dataset.c;filt()}
+if(t.dataset.go){cat=t.dataset.go;filt();$("shop").scrollIntoView()}
+if(t.classList.contains("add")){add(+t.dataset.id,1);openCart(true)}
+if(t.dataset.a)add(+t.dataset.a,1);
+if(t.dataset.m)add(+t.dataset.m,-1);
+if(t.id==="open")openCart(true);
+if(t.id==="close"||t.id==="veil")openCart(false);
+if(t.id==="pay"){$("note").textContent="Demo only. On the live site this opens a secure Paystack checkout."}
+if(t.id==="wbtn"&&t.getAttribute("href")==="#")e.preventDefault();
+});
+$("zone").addEventListener("change",render);
+render();
+</script>
+</body>
+</html>
